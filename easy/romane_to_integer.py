@@ -6,7 +6,6 @@ class Solution(object):
         """
         # checking the length constrain with or condition
         allwed_charaters = ['X','I','V','L','C','D','M']
-        double_instance = ['IV','IX','XL','XC','CD','CM']
         # declare int varible to caculate the end converters
         X=I=V=L=C=D=M = 0
         IX = IV = XL = XC = CD = CM = 0
