@@ -10,7 +10,6 @@ class Solution(object):
         # declare int varible to caculate the end converters
         X=I=V=L=C=D=M = 0
         IX = IV = XL = XC = CD = CM = 0
-        print(s[1])
         if((len(s) >= 1 and len(s) <= 15)):
             # checking whether character set is in the allowed string 
             # if any chrater in the allowed charater will be wrong
@@ -18,60 +17,65 @@ class Solution(object):
                 return 'very bad tring'
             else:
                 # should count the charaters
-                for i in range(len(s)):
-                    if(s[i] == 'I' and s[i+1] == 'V'):
-                            IV +=4
-                            i += 1;
-                    elif(s[i] == 'I' and s[i+1] == 'X'):
-                            IX +=9
-                            i += 2;
-                    elif(s[i] == 'X' and s[i+1] == 'L'):
-                            XL +=40
-                            i += 2;
-                    elif(s[i] == 'X' and s[i+1] == 'C'):
-                            XC +=90
-                            i += 2;
-                    elif(s[i] == 'C' and s[i+1] == 'D'):
-                            CD +=400
-                            i += 2;
-                    elif(s[i] == 'C' and s[i+1] == 'M'):
-                            CM +=900
-                            i += 2;
-                    elif(s[i] == 'I' and (s[i+1] != 'V' or s[i+1] != 'X')):
-                            I += 1;
-                    elif(s[i] == 'V'):
-                        if(i == 0):
-                            V += 5;
-                        elif(s[i - 1] == 'I'):
-                            V += 5
-                    elif(s[i] == 'X' and (s[i+1] != 'C' or s[i+1] != 'L')):
+                i = len(s) - 1 
+                while(i >= 0):
+                    if(i == 0):
+                        if(s[i] == 'I' ):
+                            X += 1;
+                        elif(s[i] == 'V' ):
+                            X += 5;
+                        elif(s[i] == 'X' ):
                             X += 10;
-                    elif(s[i] == 'L' ):
+                        elif(s[i] == 'L' ):
                             L += 50;
-                    elif(s[i] == 'C' and (s[i+1] != 'D' or s[i+1] != 'M')):
+                        elif(s[i] == 'C' ):
                             C += 100;
-                    elif(s[i] == 'D' ):
+                        elif(s[i] == 'D' ):
                             D += 500;
-                    elif(s[i] == 'M' ):
+                        elif(s[i] == 'M' ):
                             M += 1000;
-            # else:
-            #         for i in range(len(s)):
-            #             if(s[i] == 'I'):
-            #                 I += 1;
-            #             elif(s[i] == 'V'):
-            #                 V += 5;
-            #             elif(s[i] == 'X'):
-            #                 X += 10;
-            #             elif(s[i] == 'L'):
-            #                 L += 50;
-            #             elif(s[i] == 'C'):
-            #                 C += 100;
-            #             elif(s[i] == 'D'):
-            #                 D += 500;
-            #             elif(s[i] == 'M'):
-            #                 M += 1000;
-                    
-                    
+                    else:
+                        if(s[i] == 'V' and (s[i-1] == 'I')):
+                            V += 4;
+                            i -= 1;
+                        elif(s[i] == 'X' and (s[i-1] == 'I')):
+                            X += 9;
+                            i -= 1;
+                        elif(s[i] == 'L' and (s[i-1] == 'X')):
+                            L += 40;
+                            i -= 1;
+                        elif(s[i] == 'C' and (s[i-1] == 'X')):
+                            C += 90;
+                            # print(s[i -1] + s[i])
+                            # print(C)
+                            i -= 1;
+                        elif(s[i] == 'D' and (s[i-1] == 'C')):
+                            D += 400;
+                            # print(s[i -1] + s[i])
+                            # print(D)
+                            i -= 1;
+                        elif(s[i] == 'M' and (s[i-1] == 'C')):
+                            M += 900;
+                            print(i)
+                            i -= 1;
+                        elif(s[i] == 'I' ):
+                            X += 1;
+                        elif(s[i] == 'V' ):
+                            X += 5;
+                        elif(s[i] == 'X' ):
+                            X += 10;
+                        elif(s[i] == 'L' ):
+                            L += 50;
+                        elif(s[i] == 'C' ):
+                            C += 100;
+                        elif(s[i] == 'D' ):
+                            D += 500;
+                        elif(s[i] == 'M' ):
+                            M += 1000;
+                            # print(s[i])
+                            # print(M)
+                    i -= 1;
+                         
                 
             return  I + V + X + L + C + D + M + IV + IX + XL + XC + CD + CM;
 
@@ -79,7 +83,7 @@ class Solution(object):
             return 'Bad string'
 
     
-s = 'VI'
+s = "MMMCDXC"
 print(Solution.romanToInt(Solution,s))
 
         
