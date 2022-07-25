@@ -26,7 +26,8 @@ class Solution(object):
             copy_one = ''.join(string)
             # chenge string into integer
             origin_integer = int(copy_one)
-
+            # for a practice purpose i checked whether theintiger is can change into string 
+            # as_string = str(origin_integer)
             string2 = [str(integer) for integer in reversed_list]
             copy_two = ''.join(string2)
             reversed_integer = int(copy_two)
@@ -36,7 +37,7 @@ class Solution(object):
         
         return result;
 
-num = 121
+num = 1214
 res  = Solution.isPalindrome(Solution, num)
 print(res)
 
