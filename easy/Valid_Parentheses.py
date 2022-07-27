@@ -5,22 +5,38 @@ class Solution(object):
         :rtype: bool
         """
         allowed_string = ['(',')','[',']','{','}']
-        counter = 0
-        print(len(s))
+        copy = ''
         if any(x in allowed_string for x in s):
-            while(counter < len(s)):
-                print(counter)
-                if((s[counter] == '(' and s[counter+1] == ')') or (s[counter] == '{' and s[counter+1] == '}') or (s[counter] == '[' and s[counter+1] == ']')):
-                    print(s[counter] + s[counter+1])
-                    if(counter == len(s) -2):
-                        return True
-                    counter += 2
-                    
-                else:
-                    return False    
+            copy  = s
+            length = len(copy)
+            i = j = 0
+            list1=[]
+            list1[:0]=s
+            while(length > 0 and j < length):
+                    if(list1[i] == '(' and list1[j + 1] == ')'):
+                        print(list1.pop(i))
+                        print(list1.pop(i))
+                        i = j = 0
+                        length = len(list1)
+                        print(list1)
+                    elif(list1[i] == '[' and list1[j+1] == ']'):
+                        print(list1.pop(i))
+                        print(list1.pop(i))
+                        i = j = 0
+                        length = len(list1)
+                        print(length)
+                    elif(list1[i] == '{' and list1[j+1] == '}'):
+                        print(list1.pop(i))
+                        print(list1.pop(i))
+                        i = j = 0
+                        length = len(list1)
+                        print(length)
+                    j += 1;
+             
+
         
 
-s = "()"
+s = "([])"
 print(Solution.isValid(Solution, s))
 
 
