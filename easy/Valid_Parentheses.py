@@ -7,36 +7,51 @@ class Solution(object):
         allowed_string = ['(',')','[',']','{','}']
         copy = ''
         if any(x in allowed_string for x in s):
-            copy  = s
-            length = len(copy)
-            i = j = 0
+            round = 0
+            i = j = f= 0
             list1=[]
+            copy_list =[]
             list1[:0]=s
-            while(length > 0 and j < length):
-                    if(list1[i] == '(' and list1[j + 1] == ')'):
-                        print(list1.pop(i))
-                        print(list1.pop(i))
-                        i = j = 0
-                        length = len(list1)
-                        print(list1)
-                    elif(list1[i] == '[' and list1[j+1] == ']'):
-                        print(list1.pop(i))
-                        print(list1.pop(i))
-                        i = j = 0
-                        length = len(list1)
-                        print(length)
-                    elif(list1[i] == '{' and list1[j+1] == '}'):
-                        print(list1.pop(i))
-                        print(list1.pop(i))
-                        i = j = 0
-                        length = len(list1)
-                        print(length)
-                    j += 1;
+            copy_list = list1
+            must_round = len(copy_list)/2
+            for x in range(len(list1)):
+                for y in range(len(list1)):
+                    if(copy_list != [] and f < len(copy_list)):
+                        print(len(copy_list),i,f)
+                        if(copy_list[i] == '(' and copy_list[f + 1] == ')'):
+                            print(copy_list.pop(i))
+                            print(copy_list.pop(f))
+                            round += 1
+                            i =  f = 0
+                            print(copy_list,i,f)                   
+                        elif(copy_list[i] == '[' and copy_list[f+1] == ']'):
+                            print(copy_list.pop(i))
+                            print(copy_list.pop(f))
+                            round += 1
+                            i = f=  0
+                            print(copy_list)
+                        elif(list1[i] == '{' and list1[j+1] == '}'):
+                            print(copy_list.pop(i))
+                            print(copy_list.pop(f))
+                            round += 1
+                            i = f=  0
+                            print(copy_list)
+                            print(round)
+                        else:
+                            f += 1
+
+        if(round == must_round):
+            return True
+        else:
+            return  False
+                        
+                
+                        
              
 
         
 
-s = "([])"
+s = "[[[[((({{{])})}]]])}"
 print(Solution.isValid(Solution, s))
 
 
